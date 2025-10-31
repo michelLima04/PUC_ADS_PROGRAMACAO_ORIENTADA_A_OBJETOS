@@ -9,11 +9,15 @@ public class UserInterface{ // Classe de Interface com o Usuário
         double propertyValue;
 
         while (true) {
-            System.out.print("> Informe o Valor do Imóvel: >>R$");
-            String inputPropertyValue = sc.nextLine(); // Fazendo a leitura do input como uma String, para a próxima validação.
+            System.out.print("> Informe o Valor do Imóvel: >> R$");
+            // Fazendo a leitura do input como uma String, para a próxima validação.
+            String inputPropertyValue = sc.nextLine();
 
-            try{ // Validação try/catch para garantir que o input seja um número, e não aceite Strings ou Char como input (Obs: Pesquisei na internet para fazer esta validação mais completa.)
-                propertyValue = Double.parseDouble(inputPropertyValue); // Tentativa de converter o input String para um Double.
+            try{
+                // Validação try/catch para garantir que o input seja um número, e não aceite Strings ou Char como input (Obs: Pesquisei na internet para fazer esta validação mais completa e realista.)
+
+                // Tentativa de converter o input String para um Double.
+                propertyValue = Double.parseDouble(inputPropertyValue);
 
                 // Se a conversão foi um sucesso, logo o input é um número, e ele validará para aceitar apenas valores positivos.
                 if (propertyValue > 0) {
@@ -33,11 +37,12 @@ public class UserInterface{ // Classe de Interface com o Usuário
         int loanTerm;
 
         while(true){
-            System.out.print("> Informe o Prazo do Financiamento (anos): >>");
+            System.out.print("> Informe o Prazo do Financiamento (anos): >> ");
             String inputLoanTerm = sc.nextLine();
 
             try{
-                loanTerm = Integer.parseInt(inputLoanTerm); // Tentativa de convertar o input String para Int
+                // Tentativa de convertar o input String para Int
+                loanTerm = Integer.parseInt(inputLoanTerm);
 
                 // Se a conversão foi um sucesso, logo o input é um número, e ele validará para aceitar apenas valores positivos.
                 if(loanTerm > 0){
@@ -59,11 +64,12 @@ public class UserInterface{ // Classe de Interface com o Usuário
         double interestRate;
 
         while(true){
-            System.out.print("> Informe a Taxa de Juros (%): >>");
+            System.out.print("> Informe a Taxa de Juros (%): >> ");
             String inputInterestRate = sc.nextLine();
 
             try {
-                interestRate = Double.parseDouble(inputInterestRate); // Tentativa de converter o input String para um Double.
+                // Tentativa de converter o input String para um Double.
+                interestRate = Double.parseDouble(inputInterestRate);
 
                 // Se a conversão foi um sucesso, logo o input é um número, e ele validará para aceitar apenas valores positivos.
                 if(interestRate > 0){
