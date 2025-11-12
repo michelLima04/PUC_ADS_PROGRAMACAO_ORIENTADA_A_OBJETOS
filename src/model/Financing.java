@@ -1,11 +1,11 @@
 package model;
 
-public class Financing{ // Classe Financiamento
+public class Financing{ // SUPER-Classe Financiamento
 
     // ATRIBUTOS
-    private double propertyValue;      // Valor do imóvel
-    private int loanTerm;              // Prazo do Financiamento
-    private double annualInterestRate; // Taxa de Juros Anual
+    protected double propertyValue;      // Valor do imóvel
+    protected int loanTerm;              // Prazo do Financiamento
+    protected double annualInterestRate; // Taxa de Juros Anual
 
     // CONSTRUTOR - Para criar o Objeto Financiamento
     public Financing(double propertyValue, int loanTerm, double annualInterestRate){
@@ -26,12 +26,12 @@ public class Financing{ // Classe Financiamento
 
     // GETTER para a Taxa de Juros do Financiamento
     public double getAnnualInterestRate(){
-        return this.annualInterestRate;
+        return this.annualInterestRate/100;
     }
 
     // METODO para calcular o Pagamento Mensal.
     public double calculateMonthlyPayment(){
-        return (getPropertyValue() / (getLoanTerm() * 12)) * (1 + (getAnnualInterestRate()/12));
+        return (this.getPropertyValue() / (this.getLoanTerm() * 12)) * (1 + ((this.getAnnualInterestRate())/12));
     }
     // METODO para calcular o valor Total do Financiamento.
      public double calculateTotalFinancingValue(){

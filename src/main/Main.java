@@ -5,7 +5,10 @@
 // Tema: Sistema de Financiamento Imobiliário em JAVA
 
 package main;                // Pasta Main.
+import model.Apartment;
 import model.Financing;      // Importa o arquivo Financing da pasta model.
+import model.Home;
+import model.Lot;
 import util.UserInterface;   // Importa o arquivo UserInterface da pasta util.
 import java.util.ArrayList;  // Importa a classe ArrayList dos utilitários do Java para o seu uso.
 
@@ -23,45 +26,43 @@ public class Main {
         // Variavel que armazenara o Valor de Todos os Financiamentos
         double allFinancingsValue = 0.0;
 
-        // Utilizei este for que se repetirá 4x vezes para criar 4 financiamentos em seguida.
-        for (int i = 1; i <= 4; i++) {
+        // Metodo para solicitar o Valor do Imóvel
+        double propertyValue = userInterface.askPropertyValue();
+        // Metodo para solicitar o Prazo do Financiamento
+        int loanTerm = userInterface.askLoanTerm();
+        // Metodo para solicitar a Taxa de Juros (anual)
+        double interestRate = userInterface.askInterestRate();
 
-            System.out.println("> FINANCIAMENTO " + i + ":");
+        // Criação dos Objetos de Financiamento, 2x Casas, 2x Apartamento e 1x Terreno.
+        financingList.add(new model.Home(propertyValue, loanTerm, interestRate));
+        financingList.add(new model.Home(propertyValue, loanTerm, interestRate));
+        financingList.add(new model.Apartment(propertyValue, loanTerm, interestRate));
+        financingList.add(new model.Apartment(propertyValue, loanTerm, interestRate));
+        financingList.add(new model.Lot(propertyValue, loanTerm, interestRate));
 
-            // Metodo para solicitar o Valor do Imóvel
-            double propertyValue = userInterface.askPropertyValue();
-            // Metodo para solicitar o Prazo do Financiamento
-            int loanTerm = userInterface.askLoanTerm();
-            // Metodo para solicitar a Taxa de Juros (anual)
-            double interestRate = userInterface.askInterestRate();
-
-            // Criação do objeto Financiamento com bases nos dados obtidos anteriormente.
-            Financing currentFinancing = new Financing(propertyValue, loanTerm, interestRate);
-
-            // Metodo para adicionar na Lista de Financiamentos, o financiamento corrente.
-            financingList.add(currentFinancing);
-
-            // Váriavel que somarará o valor de Todos os Imóveis;
-            allPropertiesValue += currentFinancing.getPropertyValue();
-            // Váriavel que somarará o valor de Todos os Financiamentos.
-            allFinancingsValue += currentFinancing.calculateTotalFinancingValue();
-
-            System.out.println("--------------------------------------------------");
-        }
+        // Váriavel que somarará o valor de Todos os Imóveis;
+        allPropertiesValue = 0;
+        // Váriavel que somarará o valor de Todos os Financiamentos.
+        allFinancingsValue = 0;
 
         int cont = 1;
-        System.out.println("----------------[FINANCIAMENTOS]------------------\n");
-
-        // Estrutura FOR-EACH que irá percorrer os objetos dentro do ArrayList de Financimentos.
+        System.out.println("\n----------------[FINANCIAMENTOS]------------------");
+        // Estrutura FOR-EACH que irá percorrer os Objetos do tipo Financiamento dentro do ArrayList de Financimentos.
         for(Financing financing : financingList){
+
             double currentPropertyValue = financing.getPropertyValue();
             int currentLoanTerm = financing.getLoanTerm();
+            double currentMonthPayment = financing.calculateMonthlyPayment();
             double currentFinancingValue = financing.calculateTotalFinancingValue();
-            System.out.printf("> Financimento %d: \n  - Valor do Imóvel: R$%,.3f\n  - Prazo(anos): %d\n  - Valor Total do Financimento: R$%,.3f\n", cont, currentPropertyValue, currentLoanTerm, currentFinancingValue);
+            System.out.printf("\n> Financimento %d:\n  - Valor do Imóvel: R$%,.3f\n  - Prazo(anos): %d\n  - Valor da Parcela: RS%,.3f\n  - Valor Total do Financimento: R$%,.3f\n", cont, currentPropertyValue, currentLoanTerm, currentMonthPayment,currentFinancingValue);
+
+            allPropertiesValue += currentPropertyValue;
+            allFinancingsValue += currentFinancingValue;
+
             cont++;
         }
         System.out.println("--------------------------------------------------");
-        System.out.printf("> TOTAL DE TODOS OS IMÓVEIS: R$%,.3f\n", allPropertiesValue);
-        System.out.printf("> TOTAL DE TODOS OS FINANCIAMENTOS: R$%,.3f\n", allFinancingsValue);
+        System.out.printf("> VALOR TOTAL DE TODOS OS IMÓVEIS: R$%,.3f\n", allPropertiesValue);
+        System.out.printf("> VALOR TOTAL DE TODOS OS FINANCIAMENTOS: R$%,.3f\n", allFinancingsValue);
     }
 }
