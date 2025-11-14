@@ -41,7 +41,7 @@ public class UserInterface{ // Classe de Interface com o Usuário
             String inputLoanTerm = sc.nextLine();
 
             try{
-                // Tentativa de convertar o input String para Int
+                // Tentativa de convertar o input String para Int.
                 loanTerm = Integer.parseInt(inputLoanTerm);
 
                 // Se a conversão foi um sucesso, logo o input é um número, e ele validará para aceitar apenas valores positivos.

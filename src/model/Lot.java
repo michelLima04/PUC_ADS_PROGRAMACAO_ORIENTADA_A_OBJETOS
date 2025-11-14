@@ -3,13 +3,27 @@ package model;
 // Sub-classe para Financiamento de Terrenos, recebe a herança da Super-classe 'Financing'
 public class Lot extends Financing{
 
-    public Lot(double newPropertyValue, int newLoanTerm, double newAnnualInterestRate){
+    // Atributos
+    private String typeZone; // Tipo de Zona (residencial / comercial).
+
+    // Construtor
+    public Lot(double newPropertyValue, int newLoanTerm, double newAnnualInterestRate, String newTypeZone){
         super(newPropertyValue, newLoanTerm, newAnnualInterestRate);
+        this.typeZone = newTypeZone;
     }
 
+    // Metodo GETTER.
+    public String getTypeZone(){
+        return this.typeZone;
+    }
+
+    // Metodo sobrescrito para calcular o Pagamento Mensal do Terreno (OBS: com adicional de 2% do valor do Terreno para cada parcela).
     @Override
     public double calculateMonthlyPayment(){
-        return super.calculateMonthlyPayment() * 1.02;
+        // Calculo base para calcular o Financimanto.
+        double monthlyPayment = (super.getPropertyValue() / (super.getLoanTerm() * 12)) * (1 + (super.getAnnualInterestRate() / 12));
+
+        return monthlyPayment * 1.02;
     }
 }
 

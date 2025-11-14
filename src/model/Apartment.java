@@ -3,12 +3,26 @@ package model;
 // Sub-classe para Financiamento de Apartamentos, recebe a herança da Super-classe 'Financing'
 public class Apartment extends Financing{
 
-    public Apartment(double newPropertyValue, int newLoanTerm, double newAnnualInterestRate){
+    // Atributos
+    private int garageSpots; // Vagas de garagens.
+    private int floorNumber; // Número de andares.
+
+    // Construtor
+    public Apartment(double newPropertyValue, int newLoanTerm, double newAnnualInterestRate, int newGarageSpots, int newFloorNumber){
         super(newPropertyValue, newLoanTerm, newAnnualInterestRate);
+        this.garageSpots = newGarageSpots;
+        this.floorNumber = newFloorNumber;
     }
 
+    // Metodos GETTER.
+    public int getGarageSpots(){
+        return this.garageSpots;
+    }
+    public int getFloorNumber(){
+        return this.floorNumber;
+    }
 
-    // METODO para calcular o Pagamento Mensal.
+    // Metodo sobrescrito para calcular o Pagamento Mensal do Apartamento (OBS: Com alteração da fórmula base, utilizando o modelo PRICE)
     @Override
     public double calculateMonthlyPayment(){
 
