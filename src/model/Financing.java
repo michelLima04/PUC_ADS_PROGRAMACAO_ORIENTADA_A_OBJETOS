@@ -29,8 +29,11 @@ public abstract class Financing{ // SUPER-Classe Abstrata do tipo Financiamento
         return this.annualInterestRate/100;
     }
 
-    // METODO Abstrato para calcular o Pagamento Mensal.
-    public abstract double calculateMonthlyPayment();
+    // METODO para calcular o Pagamento Mensal.
+    public double calculateMonthlyPayment(){
+       return ( (this.getPropertyValue() / (this.getLoanTerm() * 12)) // Valor da parcela sem Juros (Amortização)
+                * (1 + (this.getAnnualInterestRate() / 12)) );        // Juros
+    };
 
     // METODO para calcular o valor Total do Financiamento.
      public double calculateTotalFinancingValue(){

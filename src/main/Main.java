@@ -30,7 +30,7 @@ public class Main {
         // Metodo para solicitar a Taxa de Juros (anual).
         double interestRate = userInterface.askInterestRate();
 
-        // Criação dos Objetos de Financiamento, 2x Casas, 2x Apartamento e 1x Terreno. (OBS: Todos os 5x Financiamentos terão seus valores de atributos IGUAIS, por enquanto).
+        // Criação dos Objetos de Financiamento, 2x Casas, 2x Apartamento e 1x Terreno.
         financingList.add(new model.Home(propertyValue, loanTerm, interestRate, 120.8, 180.8));
         financingList.add(new model.Home(propertyValue, loanTerm, interestRate, 139.5, 159.5));
         financingList.add(new model.Apartment(propertyValue, loanTerm, interestRate, 120, 30));

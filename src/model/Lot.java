@@ -21,9 +21,7 @@ public class Lot extends Financing{
     @Override
     public double calculateMonthlyPayment(){
         // Calculo base para calcular o Financimanto.
-        double monthlyPayment = (super.getPropertyValue() / (super.getLoanTerm() * 12)) * (1 + (super.getAnnualInterestRate() / 12));
-
-        return monthlyPayment * 1.02;
+        return super.calculateMonthlyPayment() * 1.02;
     }
 }
 
