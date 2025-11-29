@@ -10,8 +10,8 @@ public class Home extends Financing{
     private double lotSize;   // Tamanho do Terreno.
 
     // Construtor
-    public Home(double newPropertyValue, int newLoanTerm, double newAnnualInterestRate, double newBuiltArea, double newLotSize){
-        super(newPropertyValue, newLoanTerm, newAnnualInterestRate);
+    public Home(int newId, double newPropertyValue, int newLoanTerm, double newAnnualInterestRate, double newBuiltArea, double newLotSize){
+        super(newId, newPropertyValue, newLoanTerm, newAnnualInterestRate);
         this.builtArea = newBuiltArea;
         this.lotSize = newLotSize;
     }
@@ -49,5 +49,19 @@ public class Home extends Financing{
 
         // Calcular o Financimanto.
         return super.calculateMonthlyPayment() + increase;
+    }
+
+    // METODO sobrescrito que agrupará os valores dos atributos da Casa em uma String
+    @Override
+    public String toString(){
+
+        // Abaixo, utilizando o metodo 'super', chamamos o toString() da classe Pai (Financing), para trazer os atributos que lá foram pré-definidos.
+        StringBuilder builder = new StringBuilder(super.toString());
+
+        builder.insert(0, "Tipo: Casa, ");
+        builder.append("Área: " + this.getBuiltArea() + "m², ");
+        builder.append("Terreno: " + this.getLotSize() + "m²");
+
+        return builder.toString();
     }
 }

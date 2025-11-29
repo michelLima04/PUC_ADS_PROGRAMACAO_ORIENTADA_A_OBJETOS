@@ -1,0 +1,6 @@
+Valor Imóvel: R$ 100000.0, Valor Total: R$ 101666.66666666667, Taxa: 10.0%, Prazo: 10 anos, Área: 150.0m², Terreno: 300.0m²
+Valor Imóvel: R$ 500000.0, Valor Total: R$ 508333.3333333333, Taxa: 10.0%, Prazo: 20 anos, Área: 200.0m², Terreno: 400.0m²
+Valor Imóvel: R$ 300000.0, Valor Total: R$ 547703.9554473618, Taxa: 9.0%, Prazo: 15 anos, Vagas: 1, Andares: 5
+Valor Imóvel: R$ 800000.0, Valor Total: R$ 1377321.1046648382, Taxa: 12.0%, Prazo: 10 anos, Vagas: 3, Andares: 15
+Valor Imóvel: R$ 150000.0, Valor Total: R$ 154402.50000000003, Taxa: 11.0%, Prazo: 5 anos, Zona: Comercial
+Valor Imóvel: R$ 250000.0, Valor Total: R$ 257125.00000000003, Taxa: 10.0%, Prazo: 12 anos, Zona: Residencial

@@ -8,8 +8,8 @@ public class Apartment extends Financing{
     private int floorNumber; // Número de andares.
 
     // Construtor
-    public Apartment(double newPropertyValue, int newLoanTerm, double newAnnualInterestRate, int newGarageSpots, int newFloorNumber){
-        super(newPropertyValue, newLoanTerm, newAnnualInterestRate);
+    public Apartment(int newId, double newPropertyValue, int newLoanTerm, double newAnnualInterestRate, int newGarageSpots, int newFloorNumber){
+        super(newId, newPropertyValue, newLoanTerm, newAnnualInterestRate);
         this.garageSpots = newGarageSpots;
         this.floorNumber = newFloorNumber;
     }
@@ -34,5 +34,19 @@ public class Apartment extends Financing{
 
         // Fórmula alterada para a o Financiamento de Apartamento com base no sistema de amortização PRICE.
         return ((super.getPropertyValue() * monthlyInterestRate * Math.pow((1 + monthlyInterestRate), totalMonths)) / (Math.pow((1 + monthlyInterestRate), totalMonths) - 1));
+    }
+
+    // METODO sobrescrito que agrupará os valores dos atributos do Apartamento em uma String
+    @Override
+    public String toString(){
+
+        // Abaixo, utilizando o metodo 'super', chamamos o toString() da classe Pai (Financing), para trazer os atributos que lá foram pré-definidos.
+        StringBuilder builder = new StringBuilder(super.toString());
+
+        builder.insert(0, "Tipo: Apartamento, ");
+        builder.append("Vagas: " + this.getGarageSpots() + ", ");
+        builder.append("Andares: " + this.getFloorNumber());
+
+        return builder.toString();
     }
 }
